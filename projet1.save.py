@@ -42,52 +42,64 @@
 
 #//consignes //
 
+
 import random
 
 from english_words import english_words_set
 
 def english_random():
-    my_set = english_words_set
-    word = random.choice(list(my_set))
-    print(word)  
-    return word
-
+  my_set = english_words_set
+  word = random.choice(list(my_set))
+  return word
 
 
 random_word = english_random()
 
 print (random_word)
 
+n = len(random_word)
 
+#penalite = 1
+#max(penalite) = 12
 
 def spaces(random_word):
     n = len(random_word)
-    result = ["_"] * n
-    return result
+    result = ["_ "] * n
+    return (result)
 
-print (spaces(random_word))
 hidden = spaces(random_word)
-print ("".join(hidden))
+print (" ".join(hidden))
 
+
+user_input = input("Enter a word or letter: ").lower()
 
 
 def check_letter(random_word, user_input, hidden):
     if len(user_input) != 1:
         print("Enter a single letter")
+        return hidden
 
-    for i, ch in enumerate(random_word):
-        if ch == user_input and hidden[i]== "_": 
+    for i in range(len(random_word)):
+        if random_word[i] == user_input:
             hidden[i] = user_input
-return hidden
-#    print("_".join(hidden))
+
+    print(" ".join(hidden))
 
     
-while "_" in hidden:
-	user_input = input("Enter a word or letter: ").lower()
-	hidden = check_letter(random_word, user_input, hidden)
-	print (hidden)
+    while "_" in hidden:
+        user_input = input("Enter a word or letter: ").lower()
+        hidden = check_letter(random_word, user_input, hidden)
+
+    return hidden
 
 	
+
+
+
+#def penality(current_penalties user_input, random_word):
+#    if random_word[i] != user_input :
+#        current_penalties += 1
+#    print (current_penalties)
 
 def check_word(random_word, user_input):
 	if random_word == user_input:
@@ -95,17 +107,12 @@ def check_word(random_word, user_input):
 	else:
 		print ("false")
 
-#hidden = check_letter(random_word, user_input, hidden)
-#check_word(random_word, user_input)
-
-
+hidden = check_letter(random_word, user_input, hidden)
+check_word(random_word, user_input)
 
 #   (rajouter penalité avec else)
 
-#def penality(current_penalties user_input, random_word):
-  #    if random_word[i] != user_input :
-  #        current_penalties += 1
-  #    print (current_penalties)
+
 
 
 
